@@ -2,7 +2,74 @@ const MangoTree = require('./mango_tree.js');
 const AppleTree = require('./apple_tree.js');
 const PearTree = require('./pear_tree.js');
 
-class TreeGrove {}
+class TreeGrove {
+  constructor() {
+    this._garden = [];
+  }
+
+  gardenInfo() {
+    return this._garden;
+  }
+
+  addTree(tree) {
+    return this._garden.push(tree);
+  }
+
+  inputTree(name, age, height, matureAge, healthyStatus) {
+    if(name === "MangoTree") {
+      var mangoes = new MangoTree(age, height, matureAge, healthyStatus);
+      this.addTree(mangoes);
+    } else if(name === "AppleTree") {
+      var apples = new AppleTree(age, height, matureAge, healthyStatus);
+      this.addTree(apples);
+    } else if(name === "PearTree") {
+      var pears = new PearTree(age, height, matureAge, healthyStatus);
+      this.addTree(pears);
+    }
+  }
+
+  show_ages() {
+    var garden = this.gardenInfo();
+    for(var i = 0; i < garden.length; i++) {
+      console.log(garden[i].age)
+    }
+  }
+
+  show_trees() {
+    var garden = this.gardenInfo();
+    for(var i = 0; i < garden.length; i++) {
+      console.log(garden[i]);
+    }
+  }
+
+  mature_trees() {
+    var garden = this.gardenInfo();
+    for(var i = 0; i < garden.length; i++) {
+      if(garden[i].age >= matureAge) {
+        console.log(garden[i]);
+      }
+    }
+  }
+
+  dead_trees() {
+    var garden = this.gardenInfo();
+    for(var i = 0; i < garden.length; i++) {
+      if(garden[i].healthyStatus == false) {
+        console.log(garden[i]);
+      }
+    }
+  }
+
+  nextYear(year) {
+    var garden = this.gardenInfo();
+    for(var i = 0; i < year; i++) {
+      for(var j = 0; j < garden.length; j++) {
+        garden[i].grow();
+        garden[i].produceFruit();
+      }
+    }
+  }
+}
 
 var grove = new TreeGrove()
 // input your trees data !
@@ -20,10 +87,10 @@ grove.inputTree("PearTree", 7, 2, 15,true)
 grove.nextYear()
 
 // show trees age
-grove.showAge()
+grove.show_ages()
 
 // show trees
-grove.showTrees()
+grove.show_trees()
 
 // show trees
 grove.mature_trees()
