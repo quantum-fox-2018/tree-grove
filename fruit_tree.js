@@ -47,15 +47,11 @@ class FruitTree {
         // age
         this._age += 1;
 
-        if (this._age === 1) {
-            this._height = this._plantTree;
-        }
-
         // height
         if (this._age <= this._mature) {
-            this._height += addHeight;
+            this._plantTree += addHeight;
         } else {
-            this._height = this._maxHeight;
+            this._plantTree = this._maxHeight;
         }
 
         // max age
@@ -65,21 +61,21 @@ class FruitTree {
     }
 
     // Produce some fruit
-    produceFruit(fruit_type) {
+    produceFruit() {
         let totalFruit = Math.round(Math.random() * (20 - 1) + 1);
 
         for (let i = 0; i < totalFruit; i++) {
-            if (fruit_type === 'mango') {
+            if (this._treeName === 'ManggoTree') {
                 let mango = new Mango();
                 this._fruits.push(mango);
             }
 
-            if (fruit_type === 'apple') {
+            if (this._treeName === 'AppleTree') {
                 let apple = new Apple();
                 this._fruits.push(apple);
             }
 
-            if (fruit_type === 'pear') {
+            if (this._treeName === 'PearTree') {
                 let pear = new Pear();
                 this._fruits.push(pear);
             }
