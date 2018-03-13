@@ -1,32 +1,102 @@
+"use strict"
+
 const MangoTree = require('./mango_tree.js');
 const AppleTree = require('./apple_tree.js');
 const PearTree = require('./pear_tree.js');
 
-class TreeGrove {}
+class TreeGrove{
+
+  constructor(){
+    this._farm = []
+  }
+
+  nextYear(number){
+    let farm = this.getFarm()
+    for (var y = 0; y < number; y++) {
+      for (var i = 0; i < farm.length; i++) {
+        farm[i].grow()
+        farm[i].produceFruits()
+        farm[i].harvest()
+      }
+    }
+  }
+
+  addFarm(tree){
+    this._farm.push(tree)
+  }
+
+  getFarm(){
+    return this._farm
+  }
+
+  inputTree(namaPohon, umur, tinggi, matureAge, isHealthy){
+    if (namaPohon === "MangoTree") {
+      var mangoTree = new MangoTree(umur, tinggi, matureAge, isHealthy)
+      this.addFarm(mangoTree)
+    }else if(namaPohon === "AppleTree"){
+      var appleTree = new AppleTree(umur, tinggi, matureAge, isHealthy)
+      this.addFarm(appleTree)
+    }else if(namaPohon === "PearTree"){
+      var pearTree = new PearTree(umur, tinggi, matureAge, isHealthy)
+      this.addFarm(pearTree)
+    }else {
+      return "nama pohon tidak valid"
+    }
+  }
+
+  show_ages(){
+    let farm = this.getFarm()
+    for (var i = 0; i < farm.length; i++) {
+      console.log("umur pohon sekarang adalah ", farm[i].age);
+    }
+  }
+
+  show_trees(){
+    let farm = this.getFarm()
+    for (var i = 0; i < farm.length; i++) {
+      console.log(farm[i]);
+    }
+  }
+
+  mature_trees(){
+    let farm = this.getFarm()
+    for (var i = 0; i < farm.length; i++) {
+      if (farm[i].age >= farm[i].matureAge) {
+        console.log(farm[i]);
+      }
+    }
+  }
+
+  dead_trees(){
+    let farm = this.getFarm()
+    for (var i = 0; i < farm.length; i++) {
+      if (farm[i].healthyStatus === false) {
+        console.log(farm[i]);
+      }
+    }
+  }
+}
 
 var grove = new TreeGrove()
-// input your trees data !
-// parameter ke-1: nama pohon
-// parameter ke-2: umur pohon ketika ditanam di taman tersebut
-// pamareter ke-3: tinggi pohon pertama kali ketika ditanam di taman tersebut
-// parameter ke-4: umur mature pohon tersebut
-// parameter ke-5: healthyStatus dari pohon tersebut ketika ditanam
-grove.inputTree("MangoTree", 3, 1.8, 7,true)
-grove.inputTree("MangoTree", 5, 2.4, 12,true)
-grove.inputTree("AppleTree", 4, 1.2, 5,true)
-grove.inputTree("PearTree", 7, 2, 15,true)
+grove.inputTree("MangoTree",8,20,9,true)
+grove.inputTree("MangoTree",8,21,10,true)
+grove.inputTree("AppleTree",9,22,11,true)
+grove.inputTree("PearTree",10,23,12,true)
 
-// next year
-grove.nextYear()
+  grove.nextYear(3)
 
-// show trees age
-grove.showAge()
+  console.log("showing ages");
+  grove.show_ages()
+  console.log(" ");
 
-// show trees
-grove.showTrees()
+  console.log("showing trees");
+  grove.show_trees()
+  console.log(" ");
 
-// show trees
-grove.mature_trees()
+  console.log("showing mature_trees");
+  grove.mature_trees()
+  console.log(" ");
 
-// show trees
-grove.dead_trees()
+  console.log("showing dead_trees");
+  grove.dead_trees()
+  console.log(" ");
