@@ -1,5 +1,5 @@
 'use strict'
-const FruitTree = require('./fruit_tree.js');
+const {FruitTree, Fruit} = require('./fruit_tree.js');
 
 class AppleTree extends FruitTree {
   constructor(name, age, height, matureAge, healthyStatus) {
@@ -7,4 +7,13 @@ class AppleTree extends FruitTree {
   }
 }
 
-module.exports = AppleTree
+class Apple extends Fruit {
+  constructor() {
+    super();
+  }
+}
+
+module.exports = {
+  AppleTree,
+  Apple
+}

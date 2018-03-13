@@ -1,6 +1,6 @@
-const MangoTree = require('./mango_tree.js');
-const AppleTree = require('./apple_tree.js');
-const PearTree = require('./pear_tree.js');
+const {MangoTree, Mango} = require('./mango_tree.js');
+const {AppleTree, Apple} = require('./apple_tree.js');
+const {PearTree, Pear} = require('./pear_tree.js');
 
 class TreeGrove {
   constructor() {
@@ -23,10 +23,8 @@ class TreeGrove {
 
   nextYear() {
     for (let i in this._trees) {
-      this._trees[i].age = this._trees[i].age + 9;
-      if (this._trees[i].age >= this._trees[i].maxAge) {
-        this._trees[i].healthyStatus = false;
-      }
+      this._trees[i].grow();
+      this._trees[i].produceFruit();
     }
   }
 
@@ -108,3 +106,5 @@ grove.mature_trees()
 
 // show trees
 grove.dead_trees()
+
+//console.log(grove);
