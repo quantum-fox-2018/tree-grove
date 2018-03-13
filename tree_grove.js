@@ -59,7 +59,7 @@ class TreeGrove {
   nextYear() {
     let trees = this.trees
     for(let i=0; i<trees.length; i++) {
-      trees[i]._age++
+      trees[i].grow()
     }
   }
 
@@ -73,7 +73,7 @@ grove.inputTree("MangoTree", 5, 2.4, 12,true)
 grove.inputTree("AppleTree", 4, 1.2, 5,true)
 grove.inputTree("PearTree", 7, 2, 15,true)
 // console.log(grove)
-
+grove.showAge()
 // next year
 grove.nextYear()
 
