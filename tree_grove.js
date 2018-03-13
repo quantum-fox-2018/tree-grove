@@ -1,32 +1,69 @@
-const MangoTree = require('./mango_tree.js');
-const AppleTree = require('./apple_tree.js');
-const PearTree = require('./pear_tree.js');
+const {AppleTree, Apple} = require("./apple_tree.js");
+const {MangoTree, Mango} = require("./mango_tree.js");
+//const PearTree = require('./pear_tree.js');
 
-class TreeGrove {}
+class TreeGrove {
+  constructor() {
+    this._treegrove = [];
+  }
 
-var grove = new TreeGrove()
-// input your trees data !
-// parameter ke-1: nama pohon
-// parameter ke-2: umur pohon ketika ditanam di taman tersebut
-// pamareter ke-3: tinggi pohon pertama kali ketika ditanam di taman tersebut
-// parameter ke-4: umur mature pohon tersebut
-// parameter ke-5: healthyStatus dari pohon tersebut ketika ditanam
-grove.inputTree("MangoTree", 3, 1.8, 7,true)
-grove.inputTree("MangoTree", 5, 2.4, 12,true)
-grove.inputTree("AppleTree", 4, 1.2, 5,true)
-grove.inputTree("PearTree", 7, 2, 15,true)
+  get treegroove() {
+    return this._treegrove;
+  }
 
-// next year
-grove.nextYear()
+  inputTree(objTree, obj) {
+    //memasukan data pohon, menerima jenis pohon apapun dan umur pohon berapapun
+    objTree.name = obj.name;
+    objTree.age = obj.age;
+    objTree.height = obj.height;
+    objTree.matureAge = obj.matureAge;
+    objTree.healthyStatus = obj.healthyStatus;
+    this._treegrove.push(objTree);
+  }
 
-// show trees age
-grove.showAge()
+  // nextYear() {
+  //   for(let i in this.treegroove) {
+  //     this._treegrove[i]._age++;
+  //   }
+  // }
 
-// show trees
-grove.showTrees()
+  showAge() {
+    //memberi tahu umur setiap pohon yang ada di taman
+    console.log("Age of Tree Status");
+    for(let i in this.treegroove) {
+      console.log(`Pohon ${Number(i)}: ${this.treegroove[i].constructor.name} bernama ${this.treegroove[i].name} berumur ${this.treegroove[i].age}`);
+    }
+  }
 
-// show trees
-grove.mature_trees()
+  showTrees() {
+    //return semua nama pohon yang ada di taman
+    console.log("Tree Status");
+    for(let i in this.treegroove) {
+      console.log(`Pohon ${Number(i)}: ${this.treegroove[i].constructor.name} bernama ${this.treegroove[i].name}`);
+    }
+  }
 
-// show trees
-grove.dead_trees()
+  matureTrees() {
+    ///return semua nama pohon yang sedang berbuah
+    console.log("Mature Tree Status");
+    for(let i in this.treegroove) {
+      if(this.treegroove[i].age >= this.treegroove[i].matureAge) {
+          console.log(`Pohon ${Number(i)}: ${this.treegroove[i].constructor.name} bernama ${this.treegroove[i].name} sedang berbuah`);
+      }
+    }
+  }
+
+  deadTrees() {
+    // return nama pohon yang MATI di taman tersebut
+    console.log("Dead Tree Status");
+    for(let i in this.treegroove) {
+      if(!this.treegroove[i].healthyStatus) {
+        console.log(`Pohon ${Number(i)}: ${this.treegroove[i].constructor.name} bernama ${this.treegroove[i].name} sudah mati`);
+      }
+    }
+  }
+}
+
+module.exports = {
+  TreeGrove
+}
