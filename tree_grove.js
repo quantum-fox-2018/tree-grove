@@ -1,8 +1,33 @@
-const MangoTree = require('./mango_tree.js');
-const AppleTree = require('./apple_tree.js');
-const PearTree = require('./pear_tree.js');
+"use strict"
 
-class TreeGrove {}
+const {MangoTree, Mango} = require('./mango_tree.js');
+const {AppleTree, Apple} = require('./apple_tree.js');
+const {PearTree, Pear} = require('./pear_tree.js');
+
+class TreeGrove {
+    constructor() {
+        this._trees = [];
+    }
+
+    inputTree(treeName, age, plantTree, mature, healthyStatus) {
+        if (treeName === 'MangoTree') {
+            let tree = new MangoTree(treeName, age, plantTree, mature, healthyStatus);
+            this._trees.push(tree);
+        } else if (treeName === 'AppleTree') {
+            let tree = new AppleTree(treeName, age, plantTree, mature, healthyStatus);
+            this._trees.push(tree);
+        } else if (treeName === 'PearTree') {
+            let tree = new PearTree(treeName, age, plantTree, mature, healthyStatus);
+            this._trees.push(tree);
+        }
+
+        console.log(this._trees);
+    }
+
+    show_ages() {
+
+    }
+}
 
 var grove = new TreeGrove()
 // input your trees data !
@@ -17,16 +42,16 @@ grove.inputTree("AppleTree", 4, 1.2, 5,true)
 grove.inputTree("PearTree", 7, 2, 15,true)
 
 // next year
-grove.nextYear()
+// grove.nextYear()
 
 // show trees age
-grove.showAge()
+// grove.showAge()
 
 // show trees
-grove.showTrees()
+// grove.showTrees()
 
 // show trees
-grove.mature_trees()
+// grove.mature_trees()
 
 // show trees
-grove.dead_trees()
+// grove.dead_trees()
