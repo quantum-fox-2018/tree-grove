@@ -76,7 +76,8 @@ var grove = new TreeGrove()
 // parameter ke-2: umur pohon ketika ditanam di taman tersebut
 // pamareter ke-3: tinggi pohon pertama kali ketika ditanam di taman tersebut
 // parameter ke-4: umur mature pohon tersebut
-// parameter ke-5: healthyStatus dari pohon tersebut ketika ditanam
+// parameter ke-5: umur pohon tersebut akan mati
+// parameter ke-6: healthyStatus dari pohon tersebut ketika ditanam
 grove.inputTree("MangoTree", 3, 1.8, 7, 15, true)
 grove.inputTree("MangoTree", 5, 2.4, 12, 15, true)
 grove.inputTree("AppleTree", 4, 1.2, 5, 10, true)
