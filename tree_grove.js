@@ -87,7 +87,10 @@ for(let i=1;i<6;i++){
   grove.nextYear();
   for(let j=0;j<grove.farm.length;j++){
     console.log(`${grove.farm[j].name} ${grove.farm[j]._age} tahun Height: ${grove.farm[j]._height.toFixed(1)}`);
+
   }
+  grove.dead_trees()
+  grove.mature_trees()
   console.log('\n');
 }
 
